@@ -172,7 +172,7 @@ function MaintenanceReports() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await axios.get('http://localhost:4000https://renta-project.onrender.com/api/request');
+        const response = await axios.get('https://renta-project.onrender.com/api/request');
         setMaintenanceRequests(response.data);
         const initialFiltered = response.data.filter((req) => {
           if (req.createdAt) {

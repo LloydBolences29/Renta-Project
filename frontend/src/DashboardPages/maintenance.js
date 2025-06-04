@@ -99,7 +99,7 @@ const MaintenanceRequestDialog = () => {
 
   const fetchRequests = async () => {
     try {
-      const response = await axios.get('http://localhost:4000https://renta-project.onrender.com/api/request');
+      const response = await axios.get('https://renta-project.onrender.com/api/request');
       setRequests(response.data);
     } catch (err) {
       setError(err.response?.data || 'Error fetching requests');
@@ -112,9 +112,9 @@ const MaintenanceRequestDialog = () => {
     e.preventDefault();
     try {
       if (isEditMode) {
-        await axios.put(`http://localhost:4000https://renta-project.onrender.com/api/request/${selectedRequest._id}`, formData);
+        await axios.put(`https://renta-project.onrender.com/api/request/${selectedRequest._id}`, formData);
       } else {
-        await axios.post('http://localhost:4000https://renta-project.onrender.com/api/request', formData);
+        await axios.post('https://renta-project.onrender.com/api/request', formData);
       }
       await fetchRequests();
       setIsOpen(false);
@@ -144,7 +144,7 @@ const MaintenanceRequestDialog = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000https://renta-project.onrender.com/api/request/${id}`);
+      await axios.delete(`https://renta-project.onrender.com/api/request/${id}`);
       await fetchRequests();
       setIsDeleteDialogOpen(false);
       setSelectedRequest(null);

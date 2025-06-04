@@ -100,7 +100,7 @@ const MaintenanceRequestDialog = () => {
 
   const fetchRequests = async () => {
     try {
-      const response = await axios.get('http://localhost:4000https://renta-project.onrender.com/api/request');
+      const response = await axios.get('https://renta-project.onrender.com/api/request');
       setRequests(response.data);
     } catch (err) {
       setError(err.response?.data || 'Error fetching requests');
@@ -124,7 +124,7 @@ const MaintenanceRequestDialog = () => {
       if (isEditMode) {
         // 1) update on your backend (now sending payload)
         await axios.put(
-          `http://localhost:4000https://renta-project.onrender.com/api/request/${selectedRequest._id}`,
+          `https://renta-project.onrender.com/api/request/${selectedRequest._id}`,
           payload
         );
   
@@ -152,7 +152,7 @@ const MaintenanceRequestDialog = () => {
       } else {
         // create: send payload instead of bare formData
         const response = await axios.post(
-          'http://localhost:4000https://renta-project.onrender.com/api/request',
+          'https://renta-project.onrender.com/api/request',
           payload
         );
   
@@ -261,7 +261,7 @@ useEffect(() => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000https://renta-project.onrender.com/api/request/${id}`);
+      await axios.delete(`https://renta-project.onrender.com/api/request/${id}`);
       await fetchRequests();
       setIsDeleteDialogOpen(false);
       setSelectedRequest(null);
