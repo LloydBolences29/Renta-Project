@@ -3,7 +3,7 @@ const { default: mongoose } = require('mongoose');
 const User = require('../modelSchema/userSchema');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
