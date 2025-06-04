@@ -31,8 +31,11 @@ const app = express();
 
 // Middleware 
 app.use(cors({
-  origin: 'https://renta-navy.vercel.app/' 
+  origin: 'https://renta-navy.vercel.app',
+  credentials: true, // Optional: allow cookies/auth headers
 }));
+
+app.options('*', cors()); // Handle preflight
 app.use(express.json());
 app.use(bodyParser.json());
 
