@@ -49,7 +49,7 @@ const PaymentProofUpload = () => {
 
   // Fetch payment transactions on mount
   useEffect(() => {
-    fetch('https://renta-project.onrender.comhttps://renta-project.onrender.com/api/pay')
+    fetch('https://renta-project.onrender.com/api/pay')
       .then((res) => res.json())
       .then((data) => setTransactions(data))
       .catch((err) => console.error('Error fetching transactions:', err));
@@ -58,7 +58,7 @@ const PaymentProofUpload = () => {
   // Fetch room applications on mount
   useEffect(() => {
     emailjs.init('cBIKEtZRngFRjeWOq')
-    fetch('https://renta-project.onrender.comhttps://renta-project.onrender.com/api/apply')
+    fetch('https://renta-project.onrender.com/api/apply')
       .then((res) => res.json())
       .then((data) => setApplications(data))
       .catch((err) => console.error('Error fetching applications:', err));
@@ -161,7 +161,7 @@ const PaymentProofUpload = () => {
     formData.append('roomNumber', roomNumber);
     formData.append('paymentProof', selectedFile);
 
-    fetch('https://renta-project.onrender.comhttps://renta-project.onrender.com/api/pay', {
+    fetch('https://renta-project.onrender.com/api/pay', {
       method: 'POST',
       body: formData,
     })
@@ -196,7 +196,7 @@ const PaymentProofUpload = () => {
   };
 
   const handleSaveStatus = () => {
-    fetch(`https://renta-project.onrender.comhttps://renta-project.onrender.com/api/pay/${editingTransaction._id}/status`, {
+    fetch(`https://renta-project.onrender.com/api/pay/${editingTransaction._id}/status`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -227,7 +227,7 @@ const PaymentProofUpload = () => {
   };
 
   const handleDelete = (transaction) => {
-    fetch(`https://renta-project.onrender.comhttps://renta-project.onrender.com/api/pay/${transaction._id}`, {
+    fetch(`https://renta-project.onrender.com/api/pay/${transaction._id}`, {
       method: 'DELETE',
     })
       .then((res) => {
@@ -256,7 +256,7 @@ const PaymentProofUpload = () => {
 
   const handleSaveAppStatus = async () => {
     try {
-      const response = await fetch(`https://renta-project.onrender.comhttps://renta-project.onrender.com/api/apply/${editingApplication._id}`, {
+      const response = await fetch(`https://renta-project.onrender.com/api/apply/${editingApplication._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -324,7 +324,7 @@ const PaymentProofUpload = () => {
 
   const handleDeleteApp = async (app) => {
     try {
-      const response = await fetch(`https://renta-project.onrender.comhttps://renta-project.onrender.com/api/apply/${app._id}`, {
+      const response = await fetch(`https://renta-project.onrender.com/api/apply/${app._id}`, {
         method: 'DELETE',
       });
       if (!response.ok) throw new Error('Failed to delete application');
