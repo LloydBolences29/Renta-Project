@@ -63,7 +63,7 @@ function DashboardContent() {
   useEffect(() => {
     const fetchRevenue = async () => {
       try {
-        const response = await axios.get('/api/revenue');
+        const response = await axios.get('https://renta-project.onrender.comhttps://renta-project.onrender.com/api/revenue');
         setRevenueData(response.data);
       } catch (error) {
         setErrorRevenue(error.response?.data || 'Error fetching revenue');
@@ -82,7 +82,7 @@ function DashboardContent() {
   useEffect(() => {
     const fetchTenantData = async () => {
       try {
-        const response = await axios.get('/api/tenants');
+        const response = await axios.get('https://renta-project.onrender.comhttps://renta-project.onrender.com/api/tenants');
         const tenants = response.data;
         const allBuildings = [
           { property: 'Lalaine', totalRooms: 28 },
@@ -118,7 +118,7 @@ function DashboardContent() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/request');
+        const response = await axios.get('https://renta-project.onrender.comhttps://renta-project.onrender.com/api/request');
         setMaintenanceRequests(response.data);
       } catch (err) {
         setErrorRequests(err.response?.data || 'Error fetching requests');
@@ -133,7 +133,7 @@ function DashboardContent() {
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const response = await fetch('/api/pet');
+        const response = await fetch('https://renta-project.onrender.comhttps://renta-project.onrender.com/api/pet');
         if (response.ok) {
           const data = await response.json();
           setPets(data);

@@ -69,7 +69,7 @@ const handleCloseRemarkDialog = () => {
 };
 const handleSaveRemark = async () => {
   try {
-    const res = await axios.put(`/api/tenants/${remarkTenant._id}`, {
+    const res = await axios.put(`https://renta-project.onrender.com/api/tenants/${remarkTenant._id}`, {
       ...remarkTenant,
       remark: remarkText
     });
@@ -99,7 +99,7 @@ emailjs.init("DP2pHl_AB-rj4JjWj");
   // Function to fetch tenants data (used on mount and for refetching)
   const fetchTenants = async () => {
     try {
-      const response = await fetch('/api/tenants');
+      const response = await fetch('https://renta-project.onrender.com/api/tenants');
       const data = await response.json();
       setTenants(data);
       console.log(data);
@@ -178,7 +178,7 @@ emailjs.init("DP2pHl_AB-rj4JjWj");
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/api/tenants/${selectedTenantId}`);
+      await axios.delete(`https://renta-project.onrender.com/api/tenants/${selectedTenantId}`);
       setTenants((prevTenants) =>
         prevTenants.filter((tenant) => tenant._id !== selectedTenantId)
       );
@@ -198,7 +198,7 @@ emailjs.init("DP2pHl_AB-rj4JjWj");
 
   const handleSave = async () => {
     try {
-      const response = await axios.put(`/api/tenants/${editingTenantId}`, editedTenantData);
+      const response = await axios.put(`https://renta-project.onrender.com/api/tenants/${editingTenantId}`, editedTenantData);
       if (response.status === 200) {
         setTenants((prevTenants) =>
           prevTenants.map((tenant) =>
@@ -239,7 +239,7 @@ emailjs.init("DP2pHl_AB-rj4JjWj");
   const handleOpenAllStatementsDialog = async (tenant) => {
     setSelectedTenant(tenant);
     try {
-      const res = await axios.get(`/api/transactions?tenantId=${tenant._id}`);
+      const res = await axios.get(`https://renta-project.onrender.com/api/transactions?tenantId=${tenant._id}`);
       setTransactions(res.data);
     } catch (error) {
       console.error('Error fetching transactions:', error);
@@ -370,7 +370,7 @@ const handleMarkAsPaid = async () => {
   }
   
   try {
-    const response = await axios.post(`/api/tenants/${selectedTenant._id}/mark-as-paid`);
+    const response = await axios.post(`https://renta-project.onrender.com/api/tenants/${selectedTenant._id}/mark-as-paid`);
     console.log('Tenant marked as paid:', response.data);
     
     // Assuming the API returns an updated tenant object.
@@ -408,7 +408,7 @@ const handleMarkAsPaid = async () => {
   //   }
     
   //   try {
-  //     const response = await axios.post(`/api/tenants/${selectedTenant._id}/mark-as-paid`);
+  //     const response = await axios.post(`https://renta-project.onrender.com/api/tenants/${selectedTenant._id}/mark-as-paid`);
   //     console.log('Tenant marked as paid:', response.data);
   //     setSelectedTenant(response.data.tenant);
   //     // Refetch tenants data to update the list
@@ -428,7 +428,7 @@ const handleMarkAsPaid = async () => {
   const handleMarkAsAdvanced = async () => {
     if (!selectedTenant) return;
     try {
-      const response = await axios.post(`/api/tenants/${selectedTenant._id}/mark-as-advanced`);
+      const response = await axios.post(`https://renta-project.onrender.com/api/tenants/${selectedTenant._id}/mark-as-advanced`);
       console.log('Tenant marked as advanced:', response.data);
       setSelectedTenant(response.data.tenant);
       // Refetch tenants data to update the list
@@ -450,8 +450,8 @@ const handleMarkAsPaid = async () => {
     // Store the selected tenant for later use
     setSelectedTenant(tenant);
     try {
-      // Using the params object builds the URL as: /api/pay?email=tenant.email
-      const res = await axios.get('/api/pay', { params: { email: tenant.email } });
+      // Using the params object builds the URL as: https://renta-project.onrender.com/api/pay?email=tenant.email
+      const res = await axios.get('https://renta-project.onrender.com/api/pay', { params: { email: tenant.email } });
       setTransactions(res.data);
     } catch (error) {
       console.error('Error fetching payments:', error);
@@ -1224,7 +1224,7 @@ const handleMarkAsPaid = async () => {
           onClick={async () => {
             try {
               const res = await axios.put(
-                `/api/tenants/${remarkTenant._id}`,
+                `https://renta-project.onrender.com/api/tenants/${remarkTenant._id}`,
                 { ...remarkTenant, remark: '' }
               );
               setTenants(ts =>
@@ -1253,7 +1253,7 @@ const handleMarkAsPaid = async () => {
         onClick={async () => {
           try {
             const res = await axios.put(
-              `/api/tenants/${remarkTenant._id}`,
+              `https://renta-project.onrender.com/api/tenants/${remarkTenant._id}`,
               { ...remarkTenant, remark: remarkText }
             );
             setTenants(ts =>

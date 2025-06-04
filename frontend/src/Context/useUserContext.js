@@ -16,7 +16,7 @@
 //           const token = localStorage.getItem('token'); // or use another method to retrieve the token
 //           if (!token) throw new Error("No token found"); // Handle missing token
     
-//           const response = await fetch('/api/user/get-user', {
+//           const response = await fetch('https://renta-project.onrender.com/api/user/get-user', {
 //             headers: {
 //               'Authorization': `Bearer ${token}`, // Set token in Authorization header
 //               'Content-Type': 'application/json'

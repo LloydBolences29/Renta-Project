@@ -86,7 +86,7 @@ useEffect(() => {
 
   const fetchPets = async () => {
     try {
-      const response = await fetch('/api/pet');
+      const response = await fetch('https://renta-project.onrender.com/api/pet');
       if (response.ok) {
         const data = await response.json();
         setPets(data);
@@ -150,10 +150,10 @@ useEffect(() => {
     try {
       let url, method;
       if (isEditing) {
-        url = `/api/pet/${currentPetId}`;
+        url = `https://renta-project.onrender.com/api/pet/${currentPetId}`;
         method = 'PUT';
       } else {
-        url = `/api/pet/`;
+        url = `https://renta-project.onrender.com/api/pet/`;
         method = 'POST';
       }
       const response = await fetch(url, {
@@ -204,7 +204,7 @@ useEffect(() => {
   // -----------------------
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`/api/pet/${id}`, { method: 'DELETE' });
+      const response = await fetch(`https://renta-project.onrender.com/api/pet/${id}`, { method: 'DELETE' });
       const data = await response.json();
       if (response.ok) {
         // Remove the deleted pet from the list
@@ -225,7 +225,7 @@ useEffect(() => {
   // -----------------------
   // const handleApproval = async (petId, newStatus) => {
   //   try {
-  //     const response = await fetch(`/api/pet/${petId}/status`, {
+  //     const response = await fetch(`https://renta-project.onrender.com/api/pet/${petId}/status`, {
   //       method: 'PUT',
   //       headers: { 'Content-Type': 'application/json' },
   //       body: JSON.stringify({ status: newStatus }),
@@ -243,7 +243,7 @@ useEffect(() => {
 
   const handleApproval = async (petId, newStatus) => {
     try {
-      const response = await fetch(`/api/pet/${petId}/status`, {
+      const response = await fetch(`https://renta-project.onrender.com/api/pet/${petId}/status`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus }),
@@ -394,7 +394,7 @@ useEffect(() => {
               >
                 <div className="relative h-52 mb-4 overflow-hidden rounded-t-2xl mb:h-80">
                   <img
-                    src={pet.imageFile || '/api/placeholder/400/300'}
+                    src={pet.imageFile || 'https://renta-project.onrender.com/api/placeholder/400/300'}
                     alt={pet.petName}
                     className="w-full h-full object-cover transition-transform duration-500 ease-in-out transform hover:scale-105 rounded-full"
                   />

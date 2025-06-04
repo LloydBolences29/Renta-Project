@@ -31,7 +31,7 @@ const ProfilePage = () => {
   // On mount, check if a profile exists for this user.
   useEffect(() => {
     if (user?.email) {
-      const url = `/api/tenants?email=${encodeURIComponent(user.email)}`;
+      const url = `https://renta-project.onrender.com/api/tenants?email=${encodeURIComponent(user.email)}`;
       axios.get(url)
         .then((res) => {
           // Filter the response to select the profile with the correct email.
@@ -102,7 +102,7 @@ const ProfilePage = () => {
 
   const fetchTakenRooms = async (building) => {
     try {
-      const response = await axios.get('/api/tenants');
+      const response = await axios.get('https://renta-project.onrender.com/api/tenants');
       const tenants = response.data;
       const taken = tenants
         .filter((tenant) => tenant.property === building)
@@ -124,7 +124,7 @@ const ProfilePage = () => {
     e.preventDefault();
     setError('');
     try {
-      const res = await fetch('/api/tenants', {
+      const res = await fetch('https://renta-project.onrender.com/api/tenants', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

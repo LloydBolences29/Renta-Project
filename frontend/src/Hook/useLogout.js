@@ -8,7 +8,7 @@ export const useLogout = () => {
     const logout = async () => {
         try {
             // Notify backend to clear session cookies
-            const response = await fetch('/api/user/logout', {
+            const response = await fetch('https://renta-project.onrender.com/api/user/logout', {
                 method: 'POST',
                 credentials: 'include', // Ensure cookies are included
             });

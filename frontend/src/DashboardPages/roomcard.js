@@ -88,7 +88,7 @@ const RoomCard = ({ roomNumber, isRented, property, tenant }) => {
         }
     
         try {
-          await axios.post('/api/apply', {
+          await axios.post('https://renta-project.onrender.com/api/apply', {
             building: property,
             roomNumber,
             fullName: applicationData.fullName,

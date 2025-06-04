@@ -206,11 +206,11 @@ function PetReports() {
   const [showEndCalendar, setShowEndCalendar] = useState(false);
   const location = useLocation();
 
-  // Fetch pet data using fetch (from /api/pet)
+  // Fetch pet data using fetch (from https://renta-project.onrender.com/api/pet)
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const response = await fetch('/api/pet');
+        const response = await fetch('https://renta-project.onrender.com/api/pet');
         if (response.ok) {
           const data = await response.json();
           setPets(data);

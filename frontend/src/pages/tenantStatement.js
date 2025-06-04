@@ -23,7 +23,7 @@ export default function TenantStatements() {
     const fetchTransactions = async () => {
       try {
         // Fetch only transactions for the logged-in tenant using their id
-        const res = await axios.get(`/api/transactions?tenantId=${user._id}`);
+        const res = await axios.get(`https://renta-project.onrender.com/api/transactions?tenantId=${user._id}`);
         setTransactions(res.data);
       } catch (error) {
         console.error("Error fetching transactions:", error);

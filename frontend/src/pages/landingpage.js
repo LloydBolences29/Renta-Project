@@ -92,7 +92,7 @@ const LandingPage = () => {
   const handleVisitorSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch('/api/visitor-log', {
+      await fetch('https://renta-project.onrender.com/api/visitor-log', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -34,7 +34,7 @@ function AdminCalendarPage() {
   useEffect(() => {
     const fetchTenantData = async () => {
       try {
-        const response = await axios.get('/api/tenants');
+        const response = await axios.get('https://renta-project.onrender.comhttps://renta-project.onrender.com/api/tenants');
         const tenants = response.data;
         // Map each tenant to a room object
         const roomsData = tenants.map(tenant => ({
@@ -54,7 +54,7 @@ function AdminCalendarPage() {
   useEffect(() => {
     const fetchMaintenanceRequests = async () => {
       try {
-        const response = await axios.get('/api/request');
+        const response = await axios.get('https://renta-project.onrender.comhttps://renta-project.onrender.com/api/request');
         setMaintenanceRequests(response.data);
       } catch (error) {
         console.error('Error fetching maintenance requests:', error);

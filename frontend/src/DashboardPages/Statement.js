@@ -68,7 +68,7 @@ export default function TenantsPage() {
   // Fetch all transactions for the logged-in tenant
   useEffect(() => {
     if (user && user._id && user.role === 'tenant') {
-      axios.get(`/api/transactions?tenantId=${user._id}`)
+      axios.get(`https://renta-project.onrender.com/api/transactions?tenantId=${user._id}`)
         .then(res => setTransactions(res.data))
         .catch(err => console.error('Error fetching transactions:', err));
     }
@@ -88,7 +88,7 @@ export default function TenantsPage() {
   // Function to fetch tenants data
   const fetchTenants = async () => {
     try {
-      const response = await fetch('/api/tenants');
+      const response = await fetch('https://renta-project.onrender.com/api/tenants');
       const data = await response.json();
       setTenants(data);
       console.log(data);
@@ -174,7 +174,7 @@ export default function TenantsPage() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/api/tenants/${selectedTenantId}`);
+      await axios.delete(`https://renta-project.onrender.com/api/tenants/${selectedTenantId}`);
       setTenants((prevTenants) =>
         prevTenants.filter((tenant) => tenant._id !== selectedTenantId)
       );
@@ -194,7 +194,7 @@ export default function TenantsPage() {
 
   const handleSave = async () => {
     try {
-      const response = await axios.put(`/api/tenants/${editingTenantId}`, editedTenantData);
+      const response = await axios.put(`https://renta-project.onrender.com/api/tenants/${editingTenantId}`, editedTenantData);
       if (response.status === 200) {
         setTenants((prevTenants) =>
           prevTenants.map((tenant) =>
@@ -235,7 +235,7 @@ export default function TenantsPage() {
   const handleOpenAllStatementsDialog = async (tenant) => {
     setSelectedTenant(tenant);
     try {
-      const res = await axios.get(`/api/transactions?tenantId=${tenant._id}`);
+      const res = await axios.get(`https://renta-project.onrender.com/api/transactions?tenantId=${tenant._id}`);
       setTransactions(res.data);
     } catch (error) {
       console.error('Error fetching transactions:', error);
@@ -266,7 +266,7 @@ export default function TenantsPage() {
     }
     
     try {
-      const response = await axios.post(`/api/tenants/${selectedTenant._id}/mark-as-paid`);
+      const response = await axios.post(`https://renta-project.onrender.com/api/tenants/${selectedTenant._id}/mark-as-paid`);
       console.log('Tenant marked as paid:', response.data);
       setSelectedTenant(response.data.tenant);
       fetchTenants();
@@ -284,7 +284,7 @@ export default function TenantsPage() {
   const handleMarkAsAdvanced = async () => {
     if (!selectedTenant) return;
     try {
-      const response = await axios.post(`/api/tenants/${selectedTenant._id}/mark-as-advanced`);
+      const response = await axios.post(`https://renta-project.onrender.com/api/tenants/${selectedTenant._id}/mark-as-advanced`);
       console.log('Tenant marked as advanced:', response.data);
       setSelectedTenant(response.data.tenant);
       fetchTenants();

@@ -26,7 +26,7 @@ const CreateTenantForm = ({ onClose, onSuccess }) => {
   // Fetch taken rooms for the selected building from the tenants API.
   const fetchTakenRooms = async (building) => {
     try {
-      const response = await axios.get('/api/tenants');
+      const response = await axios.get('https://renta-project.onrender.comhttps://renta-project.onrender.com/api/tenants');
       const tenants = response.data;
       const taken = tenants
         .filter((tenant) => tenant.property === building)
@@ -65,7 +65,7 @@ const CreateTenantForm = ({ onClose, onSuccess }) => {
   // Handle form submission
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post('/api/tenants', data);
+      const response = await axios.post('https://renta-project.onrender.comhttps://renta-project.onrender.com/api/tenants', data);
       toast('Tenant created successfully');
       reset();
       onSuccess(response.data);

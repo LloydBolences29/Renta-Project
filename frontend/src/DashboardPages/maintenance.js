@@ -25,7 +25,7 @@ const MaintenanceRequestDialog = () => {
     if (!user?.email) return
 
     axios
-      .get(`/api/tenants/email/${encodeURIComponent(user.email)}`)
+      .get(`https://renta-project.onrender.com/api/tenants/email/${encodeURIComponent(user.email)}`)
       .then(res => {
         const t = res.data
         setBuildingName(t.property)
@@ -56,7 +56,7 @@ const MaintenanceRequestDialog = () => {
   useEffect(() => {
     const fetchTenantData = async () => {
       try {
-        const response = await axios.get('/api/tenants');
+        const response = await axios.get('https://renta-project.onrender.com/api/tenants');
         const tenants = response.data;
         
         const allBuildings = [
@@ -99,7 +99,7 @@ const MaintenanceRequestDialog = () => {
 
   const fetchRequests = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/request');
+      const response = await axios.get('http://localhost:4000https://renta-project.onrender.com/api/request');
       setRequests(response.data);
     } catch (err) {
       setError(err.response?.data || 'Error fetching requests');
@@ -112,9 +112,9 @@ const MaintenanceRequestDialog = () => {
     e.preventDefault();
     try {
       if (isEditMode) {
-        await axios.put(`http://localhost:4000/api/request/${selectedRequest._id}`, formData);
+        await axios.put(`http://localhost:4000https://renta-project.onrender.com/api/request/${selectedRequest._id}`, formData);
       } else {
-        await axios.post('http://localhost:4000/api/request', formData);
+        await axios.post('http://localhost:4000https://renta-project.onrender.com/api/request', formData);
       }
       await fetchRequests();
       setIsOpen(false);
@@ -144,7 +144,7 @@ const MaintenanceRequestDialog = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/request/${id}`);
+      await axios.delete(`http://localhost:4000https://renta-project.onrender.com/api/request/${id}`);
       await fetchRequests();
       setIsDeleteDialogOpen(false);
       setSelectedRequest(null);

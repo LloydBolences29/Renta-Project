@@ -33,7 +33,7 @@ const MaintenanceRequestDialog = () => {
   useEffect(() => {
     if (!user?.email) return;
   
-    axios.get(`/api/tenants/email/${encodeURIComponent(user.email)}`)
+    axios.get(`https://renta-project.onrender.com/api/tenants/email/${encodeURIComponent(user.email)}`)
       .then(res => {
         const { property, roomNumber } = res.data;
         // set them in both local state and formData
@@ -100,7 +100,7 @@ const MaintenanceRequestDialog = () => {
 
   const fetchRequests = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/request');
+      const response = await axios.get('http://localhost:4000https://renta-project.onrender.com/api/request');
       setRequests(response.data);
     } catch (err) {
       setError(err.response?.data || 'Error fetching requests');
@@ -124,7 +124,7 @@ const MaintenanceRequestDialog = () => {
       if (isEditMode) {
         // 1) update on your backend (now sending payload)
         await axios.put(
-          `http://localhost:4000/api/request/${selectedRequest._id}`,
+          `http://localhost:4000https://renta-project.onrender.com/api/request/${selectedRequest._id}`,
           payload
         );
   
@@ -152,7 +152,7 @@ const MaintenanceRequestDialog = () => {
       } else {
         // create: send payload instead of bare formData
         const response = await axios.post(
-          'http://localhost:4000/api/request',
+          'http://localhost:4000https://renta-project.onrender.com/api/request',
           payload
         );
   
@@ -217,7 +217,7 @@ useEffect(() => {
 
   // const handleEdit = async () => {
   //   try {
-  //     const response = await fetch(`/api/maintenance/${selectedRequest._id}`, {
+  //     const response = await fetch(`https://renta-project.onrender.com/api/maintenance/${selectedRequest._id}`, {
   //       method: 'PUT',
   //       headers: { 'Content-Type': 'application/json' },
   //       body: JSON.stringify(formData),
@@ -261,7 +261,7 @@ useEffect(() => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/request/${id}`);
+      await axios.delete(`http://localhost:4000https://renta-project.onrender.com/api/request/${id}`);
       await fetchRequests();
       setIsDeleteDialogOpen(false);
       setSelectedRequest(null);

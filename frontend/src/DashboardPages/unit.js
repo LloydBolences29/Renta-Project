@@ -32,7 +32,7 @@ const UnitsPage = () => {
   useEffect(() => {
     const fetchTenantData = async () => {
       try {
-        const response = await axios.get('/api/tenants');
+        const response = await axios.get('https://renta-project.onrender.com/api/tenants');
         const tenants = response.data;
 
         const allRooms = [

@@ -256,7 +256,7 @@ const displayedVisits = visits.filter(v =>
 useEffect(() => {
   const fetchVisits = async () => {
     try {
-      const res = await axios.get('/api/visitor-log');
+      const res = await axios.get('https://renta-project.onrender.com/api/visitor-log');
       console.log('got visits:', res.data);  // ← add this!
       setVisits(res.data);
     } catch (err) {
@@ -269,7 +269,7 @@ useEffect(() => {
   useEffect(() => {
     const fetchTenantData = async () => {
       try {
-        const response = await axios.get('/api/tenants');
+        const response = await axios.get('https://renta-project.onrender.com/api/tenants');
         const tenants = response.data;
         const allBuildings = [
           { property: 'Lalaine', totalRooms: 28 },

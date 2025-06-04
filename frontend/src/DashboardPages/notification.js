@@ -9,7 +9,7 @@
 //   const [notifications, setNotifications] = useState([]);
 
 //   useEffect(() => {
-//     fetch(`/api/notifications/${adminId}`)
+//     fetch(`https://renta-project.onrender.com/api/notifications/${adminId}`)
 //       .then((res) => res.json())
 //       .then((data) => setNotifications(Array.isArray(data) ? data : []));
 

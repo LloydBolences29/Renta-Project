@@ -42,7 +42,7 @@ const [roomNumber, setRoomNumber] = useState('');
   useEffect(() => {
     if (!user?.email) return;
   
-    fetch(`/api/tenants/email/${user.email}`)
+    fetch(`https://renta-project.onrender.com/api/tenants/email/${user.email}`)
       .then(res => {
         if (!res.ok) throw new Error('Tenant not found');
         return res.json();
@@ -68,7 +68,7 @@ const [roomNumber, setRoomNumber] = useState('');
   }, []);
 
   const fetchTransactions = () => {
-    fetch('/api/pay')
+    fetch('https://renta-project.onrender.com/api/pay')
       .then((res) => res.json())
       .then((data) => setTransactions(data))
       .catch((err) => console.error('Error fetching transactions:', err));
@@ -155,7 +155,7 @@ const [roomNumber, setRoomNumber] = useState('');
     // Field name "paymentProof" must match what the backend expects.
     formData.append('paymentProof', selectedFile);
 
-    fetch('/api/pay', {
+    fetch('https://renta-project.onrender.com/api/pay', {
       method: 'POST',
       body: formData,
     })
@@ -193,7 +193,7 @@ const [roomNumber, setRoomNumber] = useState('');
 
   // Save updated status by sending a PUT request to the backend
   const handleSaveStatus = () => {
-    fetch(`/api/pay/${editingTransaction._id}/status`, {
+    fetch(`https://renta-project.onrender.com/api/pay/${editingTransaction._id}/status`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -224,7 +224,7 @@ const [roomNumber, setRoomNumber] = useState('');
 
   // Delete transaction for admin only
   const handleDelete = (transaction) => {
-    fetch(`/api/pay/${transaction._id}`, {
+    fetch(`https://renta-project.onrender.com/api/pay/${transaction._id}`, {
       method: 'DELETE',
     })
       .then((res) => {

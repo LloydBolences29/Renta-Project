@@ -9,7 +9,7 @@ const ForgotPassword = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('/api/forgot-password', { email });
+            const response = await axios.post('https://renta-project.onrender.com/api/forgot-password', { email });
             setMessage(response.data.message);
         } catch (error) {
             setMessage(error.response?.data?.error || 'An error occurred');
