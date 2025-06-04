@@ -30,12 +30,14 @@ const MonthlyRevenue = require('./modelSchema/revenueSchema');
 const app = express();
 
 // Middleware 
-app.use(cors({
+const corsOptions = {
   origin: 'https://renta-navy.vercel.app',
-  credentials: true, // Optional: allow cookies/auth headers
-}));
+  credentials: true,
+};
 
-app.options('*', cors()); // Handle preflight
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // ✅ Use same options
+
 app.use(express.json());
 app.use(bodyParser.json());
 
